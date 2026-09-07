@@ -1,7 +1,10 @@
-from math import gcd
 class Solution(object):
+    def gcd(self,a,b):
+        while b!=0:
+            a,b=b,a%b
+        return a
     def lcm(self,a,b):
-        return (a*b)//gcd(a,b)
+        return (a*b)//self.gcd(a,b)
     def subarrayLCM(self, nums, k):
         c=0
         for i in range(len(nums)):
