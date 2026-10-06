@@ -1,15 +1,14 @@
 class Solution(object):
     def minAddToMakeValid(self, s):
-        o,r=0,0
+        stack = []
         for i in s:
-            if i=='(':
-                o+=1
-            else:
-                if o>0:
-                    o-=1
+            if i == '(':
+                stack.append('(')
+
+            elif i == ')':
+                if stack and stack[-1] == '(':
+                    stack.pop()
                 else:
-                    r+=1
-        return r+o
+                    stack.append(')')
 
-
-        
+        return len(stack)
